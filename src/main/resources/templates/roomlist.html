@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>房间列表</title>
+    <link href="css/roomlist.css" rel="stylesheet" type="text/css"/>
+    <style>
+        *{margin: 0; padding: 0;}
+        ul,ol{list-style-type: none;}
+        a{text-decoration: none; }
+        .container_lius{width: 100%;height: 80px;background-color:gainsboro;margin-bottom: 20px;}
+        .container{width: 1080px; margin: 0 auto;}
+        .container ul{
+            width: 100%;
+            height: 50px;
+            display: flex;
+            border-bottom: 2px bisque solid;
+            color: darkgrey;
+            font-size: 20px;
+            line-height: 50px;
+            text-align: center;
+            background-color: cornsilk;
+        }
+        /*.container .main :last-child{border-bottom: 0;}*/
+        .container ul{border-left:2px bisque solid;border-bottom: 2px bisque solid }
+        .container .c_title{border:2px bisque solid; border-right: 0}
+        .container ul li{border-right: 2px bisque solid;flex: 1;}
+        .container ul:hover{background-color: blanchedalmond;}
+        .title{width: 1080px; height:80px; margin: 0 auto;line-height: 80px;color:honeydew;}
+        .title ul li{float: right;margin-left: 30px;}
+        .title ul li a{color:honeydew ;font-size: 20px;}
+        .title ul li a:hover{color:lavenderblush;}
+        .left{float: left;}
+        .right{float: right;}
+        input[type=submit],input[type=button] {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 12px 24px;
+            margin-top:20px;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            color: honeydew;
+            background-color:aquamarine;
+            border-radius: 3px;
+            border: none;
+            -webkit-appearance: none;
+            outline: none;
+            width: 200px;
+            float:right;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container_lius">
+    <div class="title">
+        <h1 class="left">大理国际酒店</h1>
+        <ul class="right">
+            <li><a href="#">关于</a></li>
+            <li><a href="#">联系</a></li>
+            <li><a href="#">退出</a></li>
+        </ul>
+    </div>
+</div>
+<form action="/proc/order" method="get">
+    <div class="container">
+        <ul class="c_title"><li>房间列表</li></ul>
+        <ul class="main">
+            <li>房间编号</li>
+            <li>房间类型</li>
+            <li>早餐</li>
+            <li>网络</li>
+            <li>价格</li>
+            <li>选择</li>
+        </ul>
+
+        <ul th:each="room : ${roomlist}">
+                <li th:text="${room.no}"></li>
+                <li th:text="${room.name}"></li>
+                <li th:text="${room.breakfast}"></li>
+                <li th:text="${room.net}"></li>
+                <li th:text="${room.jg}"></li>
+                <li><input name="selectedrooms" type="checkbox" id="arcID" th:value="${room.no}" class="np"> </li>
+            </ul>
+        <input type="submit" name="submit" value="提交预订">
+    </div>
+</form>
+</body>
+</html>

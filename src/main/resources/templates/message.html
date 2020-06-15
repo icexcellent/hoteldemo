@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>订单信息</title>
+    <link href="css/message.css" type="text/css" />
+    <style>
+        * {margin: 0;padding: 0;}
+        ul,ol { list-style-type: none; }
+        a {text-decoration: none;}
+        .container_lius {width: 100%;height: 80px;background-color: gainsboro;margin-bottom: 20px;}
+        .container {width: 1080px;height: 300px;margin: 0 auto;}
+        .container ul {margin-top: 20px;width: 100%;height: 50px;color: darkgrey;font-size: 20px;line-height: 50px;background-color: cornsilk;}
+        .container ul .active { padding-left: 20px;background-color: cornsilk;}
+        .container ul li {padding-left: 60px;background-color: honeydew;}
+        .title { width: 1080px;height: 80px; margin: 0 auto;line-height: 80px;color: honeydew;}
+        .title ul li {float: right;margin-left: 30px;}
+        .title ul li a {color: honeydew;font-size: 20px;}
+        .title ul li a:hover {color: lavenderblush;}
+        .left {float: left;}
+        .right {float: right;}
+    </style>
+</head>
+<body>
+<div class="container_lius">
+    <div class="title">
+        <h1 class="left">大理国际酒店</h1>
+        <ul class="right">
+            <li><a href="#">关于</a></li>
+            <li><a href="#">联系</a></li>
+            <li><a href="#">退出</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <ul>
+        <li class="active">订购信息如下:</li>
+        <li th:text=" ${order.totalPrice}"></li>
+        <li th:text="${order.name}"></li>
+        <li th:text="${order.number}"></li>
+        <li th:text="${order.address}"></li>
+    </ul>
+</div>
+</body>
+</html>
